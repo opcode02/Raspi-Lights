@@ -14,13 +14,11 @@ Blue = [0, 0, 255]
 # create ledstrip object
 l = LedStrip_WS2801(nLeds, 2)
 
-count=0
 for pixel in range(0, nLeds):    
     color = Blue
-    if (count % 2):
+    if (pixel % 2):
         color = Green
-
-    count = count+1
+    
     l.setPixel(pixel, color)
     l.update()
 

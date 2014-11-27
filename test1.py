@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import time
-import colorsys
+import itertools
 
 from LedStrip_WS2801 import *
 
@@ -14,11 +14,10 @@ Blue = [0, 0, 255]
 # create ledstrip object
 l = LedStrip_WS2801(nLeds, 2)
 
+toggle = itertools.cycle([Red, Green, Blue]).next
+
 for pixel in range(0, nLeds):    
-    color = Blue
-    if (pixel % 2):
-        color = Green
-    
+    color = toggle()
     l.setPixel(pixel, color)
     l.update()
 
